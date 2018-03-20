@@ -19,3 +19,10 @@
 Thank `You` . Please `Call` Me `Coder`
 
 [zxing文档](https://my.oschina.net/madmatrix/blog/189031)  
+
+# 功能介绍
+### 1、用户的登录注册，修改密码
+### 2、用ListView和SimpleAdapter展示用户历史停车记录
+### 3、二维码生成工具类
+### 4、调用百度SDK显示指定区域，并添加地点标签。通过访问服务器，获取已存在的车库的x,y坐标并显示
+### 5、存车操作，向服务器发送存车请求
