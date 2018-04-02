@@ -64,17 +64,21 @@
 对于调用者来说，我们一方面可以修改百度给我们提供好的图层，例如换个道路线条的颜色等等，另一方面我们还可以在原有的图层基础上添加我们自己定义的图层
 6、	有了图层以后我们就可以在地图上根据坐标表我们需要的坐标点。在这个项目的需求中，用户要连接服务器，获取车库信息，并将车库标注在地图上。我们要解决的第一个问题是用什么信息标，和如何在地图上显示。<br>
 a)	首先第一个问题，如何标。地图是一个二维坐标来定位的，也就是经纬度，有了一个坐标的经度纬度，我们就可以在地图中准确的标注出来。下一步就是标注<br>
+<br>
 b)	百度地图提供了LatLng对象来表示坐标LatLng(double var1, double var3)，通过这个函数将值给LatLng对象，要注意var1是纬度,var3是经度，且出入的值需要是double类型。为什么要选用double来做经纬度呢？float类型或者其他类型不行吗？<br>
 float与double的区别：float是单精度浮点，一共可以有8位有效数字。Double是双精度浮点，一共有17位有效数字。Double所表示的会更精确，但是要占空间大。
 在float转double是不会出错，但是double转float时会出现意想不到的事情，因为double精度比float的高，我们知道浮点数是无法在计算机中准确表示的，例如0.1在计算机中只是表示成了一个近似值，因此，对浮点数的运算时结果具有不可预知性。<br>
+<br>
+<br>
 Float转int前面要加int强转<br>
 Int转float或者double都会加上小数点后面是0<br>
 Double转float一样<br>
 Float转double会出现精度错位，会出现好多位<br>
+<br><br>
 c)	坐标有了，我们还需要一个小图标来显示这个坐标的位置，我们用<br>
             BitmapDescriptor bitmap = BitmapDescriptorFactory<br>
                                 .fromResource(R.drawable.icon_marka);<br>
-   来获取图片。<br>
+   来获取图片。<br><br><br>
 d)	将上面的是信息加入到一个对象中，利用建造者模式，同时还可以进行其他配置<br>
 OverlayOptions option = new MarkerOptions()<br>
                     .position(point)<br>
@@ -90,7 +94,7 @@ Bundle bundle = new Bundle();//制定坐标点的信息<br>
 最后需要将整个视图定位到以一个点为中心位置就需要调用<br>
 MapStatusUpdate msu = MapStatusUpdateFactory.newLatLng(point);<br>
         mBaiduMap.setMapStatus(msu);<br>
-point是你希望的那个放在中间位置的点。<br>
+point是你希望的那个放在中间位置的点。<br><br><br>
 7）坐标点画出来了，但是只能看，我需要的是点一下表示用户想要存这个车库，下面来说一下坐标的点击事件。在不同的Button中点击事件是要重新onclick方法，在百度地图中也是<br>
 		控件mBaiduMap要设置setOnMarkerClickListener方法<br>
   
